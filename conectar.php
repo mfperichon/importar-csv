@@ -12,7 +12,7 @@ session_name('ImportarCSV');
 session_start();
 
 //Configuracion
-$conexion = new mysqli('localhost', 'root', '', 'ospapel');
+$conexion = new mysqli('localhost', 'root', '', 'import_csv');
 
 //Conectar a la base de datos
 if (mysqli_connect_errno()) {

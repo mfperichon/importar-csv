@@ -29,8 +29,8 @@
 <div class="content-wrapper">
     <section class="container-md">
         <h3>
-            Actualización de Farmacias
-            <small class="text-body-secondary">proceso automático para actualización de cartillas</small>
+            Actualización de Comercios
+            <small class="text-body-secondary">proceso automático para actualización base de datos de comercios</small>
         </h3>
     </section>
 
@@ -40,7 +40,7 @@
         $mensaje="";
         $insertados = 0;
         $actualizados = 0;
-        // Recibo el estado de la operacion en las variables de SESSION
+        // Recibo el estado de la operacion en la variable de SESSION
         // Segun el resultado, se genera un alerta diferente (elemento 'alert' de Bootstrap)
         if (isset($_SESSION['message']) && $_SESSION['message'])
         {
@@ -52,18 +52,6 @@
                     $mensaje="<div class='container-lg'>
                     <div class='alert alert-success alert-dismissible fade show' role='alert' id='myAlert'>
                         El archivo se importó con éxtito en la Base de Datos!<br>Insertados: $insertados registros<br>Actualizados: $actualizados registros
-                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                    </div>
-                </div>";
-                    unset($_SESSION['insertados']);
-                    unset($_SESSION['actualizados']);
-                    break;
-                case 'update':
-                    $insertados = $_SESSION['insertados'];
-                    $actualizados = $_SESSION['actualizados'];
-                    $mensaje="<div class='container-lg'>
-                    <div class='alert alert-info alert-dismissible fade show' role='alert' id='myAlert'>
-                        Se actualizaron los registros del archivo con éxtito!<br>Insertados: $insertados registros<br>Actualizados: $actualizados registros
                         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                     </div>
                 </div>";
@@ -119,8 +107,6 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Provincia</th>
-                                    <th>Localidad</th>
                                     <th>Nombre</th>
                                     <th>Domicilio</th>
                                     <th>Telefono</th>
@@ -129,15 +115,13 @@
                             </thead>
                             <tbody>
                                 <?php
-                                $sql = "SELECT * FROM farmacias ORDER BY id_farmacia, provincia, localidad, codigo LIMIT 10";
+                                $sql = "SELECT * FROM comercios ORDER BY id_comercio, nombre LIMIT 15";
                                 $resultset = mysqli_query($conexion, $sql) or die("database error:" . mysqli_error($conexion));
                                 if (mysqli_num_rows($resultset)) {
                                     while ($rows = mysqli_fetch_assoc($resultset)) {
                                 ?>
                                     <tr>
-                                        <td><?php echo $rows['id_farmacia']; ?></td>
-                                        <td><?php echo $rows['provincia']; ?></td>
-                                        <td><?php echo $rows['localidad']; ?></td>
+                                        <td><?php echo $rows['id_comercio']; ?></td>
                                         <td><?php echo $rows['nombre']; ?></td>
                                         <td><?php echo $rows['domicilio']; ?></td>
                                         <td><?php echo $rows['telefono']; ?></td>
@@ -146,7 +130,7 @@
                                 <?php }
                                 } else { ?>
                                     <tr>
-                                        <td colspan="7">No se encontraron farmacias.....</td>
+                                        <td colspan="7">No se encontraron comercios.....</td>
                                     </tr>
                                 <?php } ?>
                             </tbody>
@@ -159,9 +143,9 @@
 </div>
 
 <script>
-    // **** Mostrar el gif de prograso de carga para que se vea alguna actividad
-    // **** cuando el archivo tiene muchos registros y demora un poco la subida
-    // **** Al hacer click en el boton, se muestra el div que esta oculto
+    // Mostrar el gif de progreso de carga para que se vea actividad
+    // cuando el archivo tiene muchos registros y demora un poco la subida
+    // Al hacer click en el boton, se muestra el div que esta oculto
     import_data.onclick = temuestro;
     function temuestro() {
         document.getElementById("cargando").style.visibility = "visible";
@@ -169,8 +153,8 @@
 </script>
 
 <script type="text/javascript">
-    // **** Funcion setTimeOut para ocultar las notificaciones de Bootstrap
-    // **** Pasados los 4 segundos, se oculta el elemento alert con id=myAlert
+    // Funcion setTimeOut para ocultar las notificaciones de Bootstrap
+    // Pasados los 4 segundos, se oculta el elemento alert con id=myAlert
     setTimeout(function () {
         // Cerrar la notificacion 'alert' de Bootstrap
         $('#myAlert').alert('close');
