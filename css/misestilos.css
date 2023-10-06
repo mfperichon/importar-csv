@@ -1,0 +1,15 @@
+/* ==========================================================================
+   Archivo con todos los estilos que sean necesarios y deban ser definidos 
+   por fuera de los estilos base del sitio.
+   Aca podes poner tus propias clases/definiciones para los distintos elementos.
+   ========================================================================== */
+
+.contenedor {
+    display: flex;
+    justify-content: center;
+}
+
+.imgresponsive {
+    width: 100%;
+    height: auto;
+}

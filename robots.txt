@@ -1,0 +1,6 @@
+# www.robotstxt.org/
+
+# Este archivo sirve para indicar a los motores de busqueda como indexar el sitio web
+# Mediante esta indicacion le bloqueamos el acceso de todo el sitio a todos los robots
+User-agent: *
+Disallow: /
