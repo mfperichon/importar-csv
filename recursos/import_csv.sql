@@ -35,23 +35,9 @@ CREATE TABLE `comercios` (
   `codigo` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `comercios`
---
 ALTER TABLE `comercios`
   ADD PRIMARY KEY (`id_comercio`);
 
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `comercios`
---
 ALTER TABLE `comercios`
   MODIFY `id_comercio` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;

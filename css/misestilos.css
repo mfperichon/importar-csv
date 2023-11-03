@@ -4,6 +4,11 @@
    Aca podes poner tus propias clases/definiciones para los distintos elementos.
    ========================================================================== */
 
+
+h3{
+    padding-top: 50px;
+}
+
 .contenedor {
     display: flex;
     justify-content: center;

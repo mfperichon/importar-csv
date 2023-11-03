@@ -4,7 +4,6 @@
 // Mostrar todos los errores
 error_reporting(-1);
 // Solo errores de ejecucion
-//error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 // le damos un mobre a la sesion.
 session_name('ImportarCSV');
